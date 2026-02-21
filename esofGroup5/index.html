@@ -94,7 +94,7 @@
                 document.getElementById('status').textContent = 'Uploading...';
 
                 // POST the file to Flask, then immediately fetch the full question data.
-                fetch('http://localhost:5001/upload', {
+                fetch('/upload', {
                     method: 'POST',
                     body: formData
                 })
@@ -109,7 +109,7 @@
 
                     // After upload, fetch the full questions object (includes response options).
                     // /upload only returns the question names; /questions returns everything.
-                    return fetch('http://localhost:5001/questions');
+                    return fetch('/questions');
                 })
                 .then(res => res.json())
                 .then(data => {
@@ -193,7 +193,7 @@
                     return;
                 }
 
-                fetch('http://localhost:5001/questions/set-type', {
+                fetch('/questions/set-type', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ question: question, type: type })
