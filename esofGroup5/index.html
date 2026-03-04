@@ -65,6 +65,13 @@
 
             <!-- Inline confirmation message after saving -->
             <span id="saveStatus"></span>
+
+            <!-- Stats section — shown as soon as a type is selected -->
+            <div id="stats-section" style="display:none">
+                <hr>
+                <strong>Statistics:</strong>
+                <div id="stats-output"></div>
+            </div>
         </div>
 
         <script>
@@ -179,7 +186,85 @@
                 document.getElementById('typeSelect').value = question.type || '';
                 document.getElementById('saveStatus').textContent = '';
 
+                // Clear stats from any previously selected question.
+                document.getElementById('stats-section').style.display = 'none';
+                document.getElementById('stats-output').innerHTML = '';
+
                 document.getElementById('question-detail').style.display = 'block';
+            });
+
+            // --- TYPE SELECTION HANDLER ---
+            // Recalculates and displays stats whenever the user changes the type dropdown.
+            document.getElementById('typeSelect').addEventListener('change', function() {
+                const type = this.value;
+                const question = document.getElementById('questionSelect').value;
+
+                if (!type || !question) {
+                    document.getElementById('stats-section').style.display = 'none';
+                    return;
+                }
+
+                const responses = questionsData[question].options.filter(r => r.trim() !== '');
+                const statsOutput = document.getElementById('stats-output');
+                statsOutput.innerHTML = '';
+
+                const numericTypes = ['likert', 'rating', 'ranking'];
+
+                if (numericTypes.includes(type)) {
+                    // Parse responses as numbers, drop anything that isn't a valid number.
+                    const numbers = responses.map(r => parseFloat(r)).filter(n => !isNaN(n));
+
+                    if (numbers.length === 0) {
+                        statsOutput.textContent = 'No numeric responses found.';
+                    } else {
+                        // Mean: sum divided by count.
+                        const mean = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+
+                        // Median: sort then pick the middle value.
+                        // If even number of values, average the two middle ones.
+                        const sorted = [...numbers].sort((a, b) => a - b);
+                        const mid = Math.floor(sorted.length / 2);
+                        const median = sorted.length % 2 !== 0
+                            ? sorted[mid]
+                            : (sorted[mid - 1] + sorted[mid]) / 2;
+
+                        // Mode: tally each value, pick the one with the highest count.
+                        const freq = {};
+                        numbers.forEach(n => freq[n] = (freq[n] || 0) + 1);
+                        const mode = Object.entries(freq).sort((a, b) => b[1] - a[1])[0][0];
+
+                        statsOutput.innerHTML =
+                            `<p>Responses counted: ${numbers.length}</p>` +
+                            `<p>Mean: ${mean.toFixed(2)}</p>` +
+                            `<p>Median: ${median}</p>` +
+                            `<p>Mode: ${mode}</p>`;
+                    }
+
+                } else if (type === 'multiple_choice' || type === 'yes_no') {
+                    // For categorical questions, show a frequency table and the mode.
+                    const freq = {};
+                    responses.forEach(r => freq[r] = (freq[r] || 0) + 1);
+
+                    // Sort by count descending so the most common answer is first.
+                    const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]);
+                    const mode = sorted[0][0];
+
+                    let html = `<p>Responses counted: ${responses.length}</p>`;
+                    html += `<p>Most common: "${mode}"</p>`;
+                    html += '<table border="1" cellpadding="4"><tr><th>Answer</th><th>Count</th></tr>';
+                    sorted.forEach(([answer, count]) => {
+                        html += `<tr><td>${answer}</td><td>${count}</td></tr>`;
+                    });
+                    html += '</table>';
+                    statsOutput.innerHTML = html;
+
+                } else if (type === 'short_answer') {
+                    // Free text — can't do numeric stats, just show the response count.
+                    statsOutput.innerHTML = `<p>Responses counted: ${responses.length}</p>` +
+                        '<p>Mean / median / mode are not applicable for short answer questions.</p>';
+                }
+
+                document.getElementById('stats-section').style.display = 'block';
             });
 
             // --- SAVE TYPE HANDLER ---
