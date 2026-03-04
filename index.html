@@ -5,86 +5,86 @@
         <a href="https://project5deploy.onrender.com/">Main Page</a>
 
         <h1 id="sample-markdown">Sample Markdown</h1>
-<p>This is some basic, # ESC Dashboard</p>
-<p><strong>Analytics Dashboard for the Empowerment Student Center</strong></p>
-<p><em>A proposed solution to transform Qualtrics survey data into actionable visualizations and statistics.</em></p>
-<hr>
-<h2 id="running-locally">Running Locally</h2>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>Python 3.9+</li>
-<li>A modern web browser (Chrome, Firefox, Safari, Edge)</li>
-</ul>
-<h3 id="1-set-up-the-virtual-environment">1. Set up the virtual environment</h3>
-<p>From the project root:</p>
-<pre><code class="lang-bash">python -m venv .venv
-source .venv/bin/<span class="hljs-built_in">activate</span>        <span class="hljs-comment"># macOS/Linux</span>
-<span class="hljs-comment"># .venv\Scripts\activate         # Windows</span>
-pip install flask
-</code></pre>
-<h3 id="2-start-the-flask-backend">2. Start the Flask backend</h3>
-<pre><code class="lang-bash"><span class="hljs-keyword">cd</span> esofGroup5/scripts
-<span class="hljs-keyword">python</span> main.<span class="hljs-keyword">py</span>
-</code></pre>
-<p>The server will start on <strong><a href="http://localhost:5001">http://localhost:5001</a></strong>.</p>
-<blockquote>
-<p><strong>macOS note:</strong> Port 5000 is reserved by AirPlay Receiver, so we use 5001. If you see a 403 error, make sure you&#39;re hitting port 5001, not 5000.</p>
-</blockquote>
-<h3 id="3-open-the-frontend">3. Open the frontend</h3>
-<p>Open <code>esofGroup5/index.html</code> directly in your browser (File → Open, or drag it in).</p>
-<h3 id="4-upload-a-csv">4. Upload a CSV</h3>
-<p>Click <strong>Choose File</strong>, select <code>esofGroup5/scripts/test.csv</code> (or any Qualtrics CSV export), then click <strong>Upload File</strong>.</p>
-<ul>
-<li>A dropdown will appear with all survey questions.</li>
-<li>Select a question to see a preview of its responses.</li>
-<li>Use the <strong>Question Type</strong> selector to label the question, then click <strong>Save Type</strong>.</li>
-</ul>
-<hr>
-<h2 id="project-vision">Project Vision</h2>
-<h3 id="the-problem">The Problem</h3>
-<p>The Empowerment Student Center (ESC) faculty member currently spends hours manually analyzing alumni exit survey data exported from Qualtrics.
-This multi-step process involves:</p>
-<ol>
-<li>Exporting CSV from Qualtrics</li>
-<li>Manually analyzing data in Excel</li>
-<li>Creating charts one-by-one</li>
-<li>Calculating statistics manually</li>
-<li>Formatting for presentations</li>
-</ol>
-<p>This process is time-consuming and prevents staff from focusing on interpretation and strategic planning.</p>
-<h3 id="our-proposed-solution">Our Proposed Solution</h3>
-<p>The <strong>ESC Dashboard</strong> would be a web application that:</p>
-<ul>
-<li>Accepts CSV files exported from Qualtrics</li>
-<li>Helps user pick question types</li>
-<li>Generates appropriate visualizations</li>
-<li>Calculates relevant statistics</li>
-<li>Provides interactive filtering and customization</li>
-</ul>
-<p><strong>Goal:</strong> Reduce multi-hour analysis process to minutes.</p>
-<h3 id="why-this-approach">Why This Approach</h3>
-<ul>
-<li><strong>User-Friendly</strong> - Designed for administrators without technical backgrounds</li>
-<li><strong>Proposal-Ready</strong> - Would help generate publication-quality outputs for funding proposals</li>
-<li><strong>All-in-One</strong> - Single application combining parsing, visualization, and export</li>
-</ul>
-<hr>
-<h2 id="proposed-features">Proposed Features</h2>
-<h3 id="core-functionality-planned-">Core Functionality (Planned)</h3>
-<ul>
-<li><strong>Automatic CSV Upload</strong> - One-click import of Qualtrics exports</li>
-<li><strong>Dynamic Visualizations</strong> - Appropriate chart generation based on question type selected:<ul>
-<li>Multiple Choice → Pie charts or bar charts with percentages</li>
-<li>Likert Scale → Stacked bar charts showing distribution</li>
-<li>Numeric → Histograms or box plots with mean/median</li>
-<li>Open-Ended Text → Word clouds showing common themes</li>
-</ul>
-</li>
-<li><strong>Statistical Analysis</strong> - Automatic calculation of means, medians, percentages, and other statistics depending on question type</li>
-<li><strong>Advanced Filtering</strong> - Ability to filter by demographics, date ranges, and variables</li>
-</ul>
-<h3 id="potential-future-features-stretch-goals-">Potential Future Features (Stretch Goals)</h3>
-<ul>
+        <p>This is some basic, # ESC Dashboard</p>
+        <p><strong>Analytics Dashboard for the Empowerment Student Center</strong></p>
+        <p><em>A proposed solution to transform Qualtrics survey data into actionable visualizations and statistics.</em></p>
+        <hr>
+        <h2 id="running-locally">Running Locally</h2>
+                <h3 id="requirements">Requirements</h3>
+        <ul>
+        <li>Python 3.9+</li>
+        <li>A modern web browser (Chrome, Firefox, Safari, Edge)</li>
+        </ul>
+        <h3 id="1-set-up-the-virtual-environment">1. Set up the virtual environment</h3>
+        <p>From the project root:</p>
+        <pre><code class="lang-bash">python -m venv .venv
+        source .venv/bin/<span class="hljs-built_in">activate</span>        <span class="hljs-comment"># macOS/Linux</span>
+        <span class="hljs-comment"># .venv\Scripts\activate         # Windows</span>
+        pip install flask
+        </code></pre>
+        <h3 id="2-start-the-flask-backend">2. Start the Flask backend</h3>
+        <pre><code class="lang-bash"><span class="hljs-keyword">cd</span> esofGroup5/scripts
+        <span class="hljs-keyword">python</span> main.<span class="hljs-keyword">py</span>
+        </code></pre>
+        <p>The server will start on <strong><a href="http://localhost:5001">http://localhost:5001</a></strong>.</p>
+        <blockquote>
+        <p><strong>macOS note:</strong> Port 5000 is reserved by AirPlay Receiver, so we use 5001. If you see a 403 error, make sure you&#39;re hitting port 5001, not 5000.</p>
+        </blockquote>
+        <h3 id="3-open-the-frontend">3. Open the frontend</h3>
+        <p>Open <code>esofGroup5/index.html</code> directly in your browser (File → Open, or drag it in).</p>
+        <h3 id="4-upload-a-csv">4. Upload a CSV</h3>
+        <p>Click <strong>Choose File</strong>, select <code>esofGroup5/scripts/test.csv</code> (or any Qualtrics CSV export), then click <strong>Upload File</strong>.</p>
+        <ul>
+            <li>A dropdown will appear with all survey questions.</li>
+            <li>Select a question to see a preview of its responses.</li>
+            <li>Use the <strong>Question Type</strong> selector to label the question, then click <strong>Save Type</strong>.</li>
+        </ul>
+        <hr>
+        <h2 id="project-vision">Project Vision</h2>
+        <h3 id="the-problem">The Problem</h3>
+        <p>The Empowerment Student Center (ESC) faculty member currently spends hours manually analyzing alumni exit survey data exported from Qualtrics.
+        This multi-step process involves:</p>
+        <ol>
+            <li>Exporting CSV from Qualtrics</li>
+            <li>Manually analyzing data in Excel</li>
+            <li>Creating charts one-by-one</li>
+            <li>Calculating statistics manually</li>
+            <li>Formatting for presentations</li>
+        </ol>
+        <p>This process is time-consuming and prevents staff from focusing on interpretation and strategic planning.</p>
+        <h3 id="our-proposed-solution">Our Proposed Solution</h3>
+        <p>The <strong>ESC Dashboard</strong> would be a web application that:</p>
+        <ul>
+            <li>Accepts CSV files exported from Qualtrics</li>
+            <li>Helps user pick question types</li>
+            <li>Generates appropriate visualizations</li>
+            <li>Calculates relevant statistics</li>
+            <li>Provides interactive filtering and customization</li>
+        </ul>
+        <p><strong>Goal:</strong> Reduce multi-hour analysis process to minutes.</p>
+        <h3 id="why-this-approach">Why This Approach</h3>
+        <ul>
+            <li><strong>User-Friendly</strong> - Designed for administrators without technical backgrounds</li>
+            <li><strong>Proposal-Ready</strong> - Would help generate publication-quality outputs for funding proposals</li>
+            <li><strong>All-in-One</strong> - Single application combining parsing, visualization, and export</li>
+        </ul>
+        <hr>
+        <h2 id="proposed-features">Proposed Features</h2>
+        <h3 id="core-functionality-planned-">Core Functionality (Planned)</h3>
+        <ul>
+            <li><strong>Automatic CSV Upload</strong> - One-click import of Qualtrics exports</li>
+            <li><strong>Dynamic Visualizations</strong> - Appropriate chart generation based on question type selected:<ul>
+            <li>Multiple Choice → Pie charts or bar charts with percentages</li>
+            <li>Likert Scale → Stacked bar charts showing distribution</li>
+            <li>Numeric → Histograms or box plots with mean/median</li>
+            <li>Open-Ended Text → Word clouds showing common themes</li>
+        </ul>
+            </li>
+            <li><strong>Statistical Analysis</strong> - Automatic calculation of means, medians, percentages, and other statistics depending on question type</li>
+            <li><strong>Advanced Filtering</strong> - Ability to filter by demographics, date ranges, and variables</li>
+        </ul>
+        <h3 id="potential-future-features-stretch-goals-">Potential Future Features (Stretch Goals)</h3>
+        <ul>
 <li>Custom chart styling and color schemes</li>
 <li>Save/load dashboard configurations</li>
 <li>An ability for Susan to save data</li>

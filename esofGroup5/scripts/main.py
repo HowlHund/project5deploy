@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, render_template, url_for,jsonify, request, send_from_directory
 import csv
 import io
 import os
@@ -14,8 +14,24 @@ questions = {}
 
 # Serves the main page. On Render, the user hits the root URL and gets index.html.
 @app.route('/')
+@app.route('/index.html')
 def index():
     return send_from_directory(BASE_DIR, 'index.html')
+
+
+@app.route('/Analytics.html')
+def Analytics():
+    return send_from_directory(BASE_DIR, 'Analytics.html')
+
+@app.route('/documentation.html')
+def documentation():
+    return send_from_directory(BASE_DIR, 'documentation.html')
+
+@app.route('/Responses.html')
+def Responses():
+    return send_from_directory(BASE_DIR, 'Responses.html')
+
+
 
 # Serves the CSS file. The HTML references /style/style.css so Flask needs to handle it.
 @app.route('/style/<path:filename>')
